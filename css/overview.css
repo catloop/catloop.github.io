@@ -1,0 +1,216 @@
+/**
+ * 服务全览
+ */
+
+@charset "UTF-8";
+
+/* 本页公共样式开始 */
+
+.overview ul {
+    margin-bottom: 0;
+}
+
+.overview ul li {
+    padding: 0;
+}
+
+.overview ul li .wrapper.media {
+    border: 1px solid #CCC;
+    margin: 8px;
+    padding: 22px;
+    overflow: hidden;
+    position: relative;
+    max-height: 120px;
+}
+
+.overview ul li .wrapper .media-left {
+    padding-right: 15px;
+}
+
+.overview ul li .wrapper h4 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.overview ul li .wrapper p {
+    font-size: 12px;
+    line-height: 22px;
+    color: #666;
+}
+
+.overview ul li .wrapper .cover {
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    opacity: 0;
+    -webkit-transform:  scale(2);
+       -moz-transform:  scale(2);
+        -ms-transform:  scale(2);
+            transform:  scale(2);
+    /* -webkit-transition: opacity, .3s, -webkit-transform .3s;
+    transition: opacity, .3s, -webkit-transform .3s;
+    -moz-transition: opacity, transform .3s, .3s, -moz-transform .3s;
+    transition: opacity, transform .3s, .3s;
+    transition: opacity, transform .3s, .3s, -webkit-transform .3s, -moz-transform .3s; */
+}
+
+.overview ul li .wrapper:hover .cover {
+    opacity: 1;
+    -webkit-transform: scale(1);
+       -moz-transform: scale(1);
+        -ms-transform: scale(1);
+            transform: scale(1);
+    /* -webkit-transition: opacity, .3s, -webkit-transform .3s;
+    transition: opacity, .3s, -webkit-transform .3s;
+    -moz-transition: opacity, transform .3s, .3s, -moz-transform .3s;
+    transition: opacity, transform .3s, .3s;
+    transition: opacity, transform .3s, .3s, -webkit-transform .3s, -moz-transform .3s; */
+}
+
+.overview ul li .wrapper .cover {
+    background-color: rgba(203, 203, 203, .9);
+}
+
+.overview ul li.stable .wrapper .cover,
+.overview ul li.beta .wrapper .cover {
+    padding-top: 1.5em;
+}
+
+.overview ul li.beta .wrapper .cover {
+    display: none;
+}
+
+.overview ul li.stable .wrapper .cover {
+    background-color: rgba(34, 118, 218, .9);
+}
+
+.overview ul li .wrapper .cover p {
+    margin-top: 2.5em;
+    margin-bottom: 0;
+    font-size: 18px;
+    color: #333;
+}
+
+.overview ul li.stable .wrapper .cover p,
+.overview ul li.beta .wrapper .cover p {
+    font-size: 14px;
+    line-height: 24px;
+    height: 24px;
+    margin: 0;
+}
+
+.overview ul li.stable .wrapper .cover p {
+    color: #FFF;
+}
+
+.overview ul li.stable .wrapper::before,
+.overview ul li.beta .wrapper::before {
+    position: absolute;
+    top: 15px;
+    right: -24px;
+    width: 100px;
+    font-size: 14px;
+    line-height: 14px;
+    padding: 5px 0;
+    text-align: center;
+    color: #fff;
+    -webkit-transform: rotate(45deg);
+       -moz-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+            transform: rotate(45deg);
+}
+
+.overview ul li.stable .wrapper::before {
+    content: "Stable";
+    background-color: #2277DA;
+}
+
+.overview ul li.beta .wrapper::before {
+    content: "Beta";
+    background-color: #999;
+}
+
+
+/* 本页公共样式结束 */
+
+
+/* Banner 开始 */
+
+.banner {
+    height: 400px;
+    background: url("../images/overview/banner.jpg") no-repeat center center/auto auto;
+}
+
+
+/* Banner 结束 */
+
+
+/* 识别服务开始 */
+
+.ident-srv {
+    margin-top: 17px;
+}
+
+/* 识别服务结束 */
+
+/* 服务形式开始 */
+
+.srv-form ul {
+    margin-bottom: 50px;
+}
+
+.srv-form ul li .wrapper {
+    position: relative;
+    padding: 35px;
+    margin: 10px;
+    border: 0;
+    -webkit-box-shadow: 0 0 12px rgba(0, 0, 0, .3);
+       -moz-box-shadow: 0 0 12px rgba(0, 0, 0, .3);
+            box-shadow: 0 0 12px rgba(0, 0, 0, .3);
+    -webkit-transition: -webkit-box-shadow .3s;
+    transition: -webkit-box-shadow .3s;
+    -moz-transition: box-shadow .3s, -moz-box-shadow .3s;
+    transition: box-shadow .3s;
+    transition: box-shadow .3s, -webkit-box-shadow .3s, -moz-box-shadow .3s;
+}
+
+.srv-form ul li .wrapper:hover {
+    -webkit-box-shadow: 0 0 12px rgba(0, 135, 225, .3);
+       -moz-box-shadow: 0 0 12px rgba(0, 135, 225, .3);
+            box-shadow: 0 0 12px rgba(0, 135, 225, .3);
+    -webkit-transition: -webkit-box-shadow .3s;
+    transition: -webkit-box-shadow .3s;
+    -moz-transition: box-shadow .3s, -moz-box-shadow .3s;
+    transition: box-shadow .3s;
+    transition: box-shadow .3s, -webkit-box-shadow .3s, -moz-box-shadow .3s;
+}
+
+.srv-form ul li a {
+    text-decoration: none;
+    color: rgba(0, 0, 0, .38);
+}
+
+.srv-form ul li .wrapper img {
+    
+}
+
+.srv-form ul li .wrapper h4 {
+    font-size: 18px;
+    line-height: 18px;
+    margin: 20px auto 20px auto;
+}
+
+
+
+/* .srv-form ul li .wrapper p {
+    font-size: 14px;
+    line-height: 22px;
+    margin-bottom: 0;
+} */
+
+
+/* 服务形式结束 */

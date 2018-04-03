@@ -1,0 +1,1354 @@
+/**
+ * 算法演示
+ */
+
+@charset "UTF-8";
+
+/* 二级导航开始 */
+
+.tab-tits {
+    -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, .5);
+    -moz-box-shadow: 0 0 10px rgba(0, 0, 0, .5);
+    box-shadow: 0 0 10px rgba(0, 0, 0, .5);
+    background-color: #FFF;
+    z-index: 9;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.tab-tits.fixed {
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+.tab-tits .nav-tabs,
+.tab-tits .nav-tabs>li.active>a,
+.tab-tits .nav-tabs>li>a {
+    border: none;
+}
+
+.tab-tits .nav-tabs>li {
+    margin-bottom: 0;
+}
+
+.tab-tits .nav-tabs>li::after {
+    content: "";
+    position: absolute;
+    height: 3px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: transparent;
+}
+
+.tab-tits .nav>li>a:hover {
+    background-color: transparent;
+}
+
+.tab-tits .nav-tabs>li:hover::after,
+.tab-tits .nav-tabs>li.active::after,
+.tab-tits .nav-tabs:hover>li.active:hover::after {
+    background-color: #2277DA;
+    -webkit-transition: background-color .3s;
+    -moz-transition: background-color .3s;
+    transition: background-color .3s;
+}
+
+.tab-tits .nav-tabs:hover>li.active::after {
+    background-color: transparent;
+    -webkit-transition: background-color .3s;
+    -moz-transition: background-color .3s;
+    transition: background-color .3s;
+}
+
+.tab-tits .nav-tabs>li>a {
+    font-size: 14px;
+    line-height: 1;
+    padding: 24px 17px;
+    margin-right: 0;
+    color: #333;
+}
+
+.tab-tits .nav-tabs>li.active>a {
+    color: #2277DA;
+}
+
+.tab-tits .nav-tabs>li>a>.count-label {
+    font-size: 12px;
+    line-height: 10px;
+    height: 10px;
+    background-color: #f44336;
+    color: #fff;
+    border-radius: 1em;
+    padding: 2px 5px;
+}
+
+
+/* 二级导航结束 */
+
+/* 焦点图 */
+
+.demo .banner {
+    position: relative;
+    background-position: center;
+    background-size: auto 100%;
+    background-repeat: no-repeat;
+    text-align: center;
+    color: #fff;
+}
+
+.demo .banner.face {
+    background-image: url("../images/demo/banner/banner03.jpg");
+}
+
+.demo .banner.card {
+    background-image: url("../images/demo/banner/banner01.jpg");
+}
+
+.demo .banner.bill {
+    background-image: url("../images/demo/banner/banner02.jpg");
+}
+
+.demo .banner.text {
+    background-image: url("../images/demo/banner/banner04.jpg");
+}
+
+@media (max-width: 320px) {
+    .demo .banner {
+        display: none;
+    }
+}
+
+@media (min-width: 320px) {
+    .demo .banner {
+        height: 160px;
+        font-size: 8.533333333333335px;
+    }
+}
+
+@media (min-width: 480px) {
+    .demo .banner {
+        height: 200px;
+        font-size: 10.666666666666668px;
+    }
+}
+
+@media (min-width: 640px) {
+    .demo .banner {
+        height: 240px;
+        font-size: 12.8px;
+    }
+}
+
+@media (min-width: 768px) {
+    .demo .banner {
+        height: 300px;
+        font-size: 16px;
+    }
+}
+
+@media (min-width: 1366px) {
+    .demo .banner {
+        height: 450px;
+        font-size: 24px;
+    }
+}
+
+.demo .banner .banner-content {
+    position: absolute;
+    height: 9.75em;
+    top: 50%;
+    margin-top: -4.875em;
+    left: 50%;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, .5);
+}
+
+.demo .banner.face .banner-content,
+.demo .banner.text .banner-content {
+    margin-left: 40px;
+}
+
+.demo .banner.card .banner-content,
+.demo .banner.bill .banner-content {
+    transform: translateX(-50%);
+}
+
+.demo .banner .banner-content .banner-tit {
+    display: inline-block;
+    font-size: 2.5833333333333335em;
+    font-weight: 400;
+    line-height: 1.6451612903225807em;
+    height: 1.6451612903225807em;
+    margin: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, .5);
+    position: relative;
+}
+
+.demo .banner .banner-content .banner-tit::after {
+    content: "";
+    position: absolute;
+    background-color: #fff;
+    width: 7px;
+    height: 7px;
+    left: 50%;
+    bottom: -4px;
+    margin-left: -4px;
+    border-radius: 50%;
+}
+
+.demo .banner .banner-content .banner-disc {
+    font-size: 1em;
+    height: 2.6666666666666665em;
+    line-height: 2.6666666666666665em;
+    margin-bottom: .75em;
+    white-space: nowrap;
+}
+
+.demo .banner .banner-content .banner-btn {
+    height: 2em;
+    box-sizing: content-box;
+    line-height: 2em;
+    font-size: 1em;
+    padding: 0 0.6666666666666666em;
+}
+
+/* 焦点图 */
+
+/* 功能演示标题与描述开始 */
+
+.fn-tit {
+    margin-bottom: 38px;
+}
+
+.fn-tit h3 {
+    margin-top: 50px;
+    margin-bottom: 32px;
+}
+
+.fn-tit p {
+    font-size: 14px;
+    height: 20px;
+    margin-bottom: 0;
+}
+
+
+
+
+/* 功能演示标题与描述结束 */
+
+
+/* 单张与批量识别开始 */
+
+.mode {
+    margin-bottom: 30px;
+}
+
+
+
+/* 单张与批量识别结束 */
+
+
+/* 功能演示开始 */
+
+.tab-content {
+    margin-bottom: 40px;
+}
+
+.tab-content .tab-pane {
+    position: relative;
+}
+
+.tab-content .thumb-list {
+    position: relative;
+    border: 1px solid #eee;
+    padding: 4px;
+    background: url(../images/demo/preview-bg.png) no-repeat center center/auto 100%;
+    margin-bottom: 20px;
+}
+
+.tab-content .thumb-list .tips {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    right: 0;
+    font-size: 12px;
+    line-height: 18px;
+    height: 18px;
+    text-align: center;
+    margin-top: -9px;
+    color: #666;
+}
+
+.tab-content .thumb-list .tips .tips-icon {
+    display: inline-block;
+    width: 18px;
+    height: 17px;
+    margin-right: 8px;
+    background: url("../images/demo/thumb-list-tips-icon.png") no-repeat;
+    vertical-align: middle;
+}
+
+.tab-content .thumb-item {
+    position: relative;
+    width: 20%;
+    overflow: hidden;
+    height: 144px;
+    border: 4px solid transparent;
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+    border-radius: 12px;
+    float: left;
+}
+
+.tab-content .thumb-item img {
+    /*width: 100%;*/
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.tab-content .thumb-item .pdf-viewer {
+    width: 100%;
+    height: 100%;
+}
+
+.tab-content .thumb-item .pdf-viewer canvas {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.tab-content .thumb-item img.file {
+    max-width: 100%;
+    width: auto;
+    max-height: 100%;
+    height: auto;
+    padding: 10%;
+}
+
+.tab-content .thumb-item.active::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    border: 2px solid #2277da;
+    border-radius: 8px;
+}
+
+.tab-content .main-img,
+.tab-content .result {
+    border: 1px solid #eee;
+    overflow: auto;
+    height: 354px;
+}
+
+.tab-content .main-img {
+    position: relative;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: flex;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -moz-box-pack: center;
+    justify-content: center;
+    -webkit-align-items: center;
+    -webkit-box-align: center;
+    -moz-box-align: center;
+    align-items: center;
+    background-color: #fafcff;
+    padding: 20px 16px;
+    overflow: hidden;
+}
+
+.tab-content .main-img img,
+.tab-content .main-img video {
+    max-width: 100%;
+    max-height: 100%;
+    /* margin: 0 auto; */
+}
+
+.tab-content .main-img .file {
+    width: 50%;
+    height: 100%;
+    margin: 0 auto;
+    padding: 10% 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.tab-content .main-img .file img {
+    margin: 0 auto;
+}
+
+.tab-content .main-img .file .filename {
+    display: block;
+    text-align: center;
+    width: 100%;
+}
+
+.tab-content .main-img .pdf-viewer {
+    width: 100%;
+    height: 100%;
+}
+
+.tab-content .main-img .scale-box {
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+}
+
+.tab-content .main-img .pdf-viewer canvas,
+.tab-content .main-img .scale-box.auto .pdf-viewer canvas {
+    width: 100%;
+    height: auto;
+}
+
+.tab-content .main-img .scale-box.origin .pdf-viewer canvas {
+    width: initial;
+    height: auto;
+}
+
+.tab-content .main-img .scale-switch {
+    line-height: 32px;
+    position: absolute;
+    bottom: 35px;
+    right: 30px;
+    border: none;
+    background-color: rgba(0, 0, 0, .5);
+    color: #fff;
+    font-size: 14px;
+    height: 32px;
+    border-radius: 2px;
+}
+
+.tab-content .result {
+    background-color: #fafcff;
+}
+
+.tab-content .result > h4 {
+    font-size: 16px;
+    line-height: 45px;
+    height: 45px;
+    font-weight: 400;
+    color: #333;
+    margin: 0;
+    border-bottom: 1px solid #e6e6e6;
+}
+
+.tab-content .result .card span {
+    position: absolute;
+    font-size: 17px;
+    color: #2277da;
+}
+
+.tab-content .result .text {
+    margin: 10px;
+    /* overflow-y: auto; */
+    /* overflow-x: hidden; */
+    max-height: 85%;
+    font-size: 14px;
+    line-height: 20px;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+
+/* #batch .result .text {
+    overflow-x: auto;
+} */
+
+.tab-content .result .text ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+
+
+
+/* .tab-content .result .text td {
+    border: 1px solid #ccc;
+    padding: 5px 10px;
+} */
+
+.tab-content .result .text .obj {
+    margin-left: 2em;
+}
+
+.tab-content .result .text>.obj>li>.obj,
+.tab-content .result .text>.arr>li>.obj {
+    margin-left: 0;
+}
+
+.tab-content .result .failed {
+    font-size: 20px;
+    color: #ffd15d;
+    font-weight: 500;
+    text-align: center;
+    line-height: 60px;
+    height: 60px;
+}
+
+.tab-content .file-button {
+    position: relative;
+    margin-top: 40px;
+    text-align: center;
+}
+
+.tab-content .file-button .btn {
+    display: inline-block;
+    width: 180px;
+    height: 40px;
+    line-height: 40px;
+    padding: 0;
+    margin: 0 10px;
+    background-color: #2277da;
+    color: #FFF;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    -webkit-transition: background-color .3s;
+    -moz-transition: background-color .3s;
+    transition: background-color .3s;
+    box-shadow: 0 2px 6px rgba(0, 0 , 0, .3);
+}
+
+.tab-content .file-button .trans-input {
+    display: none;
+}
+
+.fieldConf .modal-body label {
+    margin: 6px 4px;
+}
+
+
+
+/* 人脸识别开始 */
+
+#face {
+    position: relative;
+}
+
+#face .simi {
+    position: absolute;
+    width: 144px;
+    height: 144px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    background-color: rgba(255,255,255,.9);
+    border: 2px solid #2277DA;
+    bottom: 50%;
+    left: 50%;
+    margin-left: -72px;
+    padding: 40px 0;
+    text-align: center;
+    animation: zoomIn .3s;
+}
+
+@keyframes zoomIn {
+    from {
+        transform: scale(0);
+    } to {
+        transform: scale(1);
+    }
+}
+
+#face .simi span {
+    display: block;
+    line-height: 32px;
+    font-size: 22px;
+    color: #2277DA;
+}
+
+#face .thumb-list {
+    min-height: 95px;
+    position: relative;
+}
+
+#face .thumb-item {
+    height: 85px;
+    border-radius: 3px;
+}
+
+#face .thumb-item.active::after {
+    border-radius: 3px;
+}
+
+#face .main-img {
+    padding: 0;
+}
+
+#face .result {
+    margin-top: 32px;
+    height: unset;
+    height: 180px;
+}
+
+#face .result h4 {
+    border-color: #d6e1ee;
+    font-size: 18px;
+    height: 50px;
+    line-height: 50px;
+}
+
+#face .result .text {
+    margin: 0;
+    padding: 38px 30px;
+}
+
+#face .result .text .highlight {
+    color: #2277da;
+}
+
+.thumb-item {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: flex;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -moz-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -moz-box-align: center;
+    align-items: center;
+    flex-flow: column nowrap;
+}
+
+@media (min-width: 1200px) {
+    #face .main-img {
+        height: 445px;
+    }
+    .tab-content .col-xs-12 .thumb-list {
+        min-height: 156px;
+    }
+}
+
+@media (max-width: 1200px) {
+    #face .thumb-list {
+        min-height: 73px;
+    }
+    #face .thumb-item {
+        height: 63px;
+    }
+    #face .main-img {
+        height: 362px;
+    }
+    .tab-content .col-xs-12 .thumb-list {
+        min-height: 154px;
+    }
+}
+
+@media (max-width: 992px) {
+    #face .thumb-list {
+        min-height: 58px;
+    }
+    #face .thumb-item {
+        height: 48px;
+    }
+    #face .main-img {
+        height: 275px;
+    }
+    .tab-content .col-xs-12 .thumb-list {
+        min-height: 102px;
+    }
+    .tab-content .main-img,
+    .tab-content .result {
+        height: 258px;
+    }
+    #idCard .result .card {
+        zoom: .75;
+    }
+    #creditCard .result .card {
+        zoom: .75;
+    }
+}
+
+#faceUp1,
+#faceUp2 {
+    display: none;
+}
+
+#face .upload-bg {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 50px;
+    background-color: rgba(0, 0, 0, .5);
+    color: #fff;
+    line-height: 50px;
+    /* opacity: 0; */
+    -webkit-transition: opacity .3s;
+    -moz-transition: opacity .3s;
+    transition: opacity .3s;
+    cursor: pointer;
+}
+
+
+
+
+/* #face .main-img:hover .upload-bg {
+    opacity: 1;
+    -webkit-transition: opacity .3s;
+    -moz-transition: opacity .3s;
+    transition: opacity .3s;
+} */
+
+#face .img-upload {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 50px;
+    width: 100%;
+    outline: none!important;
+    opacity: 0;
+    cursor: pointer;
+}
+
+#face .upload-bg i.add-img {
+    background: url('../images/demo/add-img.png') no-repeat center;
+    width: 22px;
+    height: 22px;
+    display: inline-block;
+    margin: 0 5px -6px 0;
+}
+
+
+
+
+/* 人脸识别结束 */
+
+
+/* 身份证与银行卡识别开始 */
+
+#idCard .main-img img,
+#creditCard .main-img img,
+#vat .main-img img {
+    margin: 0 auto;
+}
+
+#idCard .thumb-item,
+#creditCard .thumb-item,
+#vat .thumb-item,
+#finSta .thumb-item,
+#busLis .thumb-item {
+    border: 4px solid transparent;
+    position: relative;
+}
+
+#finSta .text {
+    white-space: nowrap;
+    /* overflow: auto; */
+}
+
+#idCard .thumb-item,
+#creditCard .thumb-item {
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 12px;
+}
+
+#vat .result td:first-child,
+#busLis .result td:first-child,
+.vatlized td:first-child {
+    white-space: nowrap;
+}
+
+#vat .result td:last-child,
+#busLis .result td:last-child,
+.vatlized td:last-child {
+    word-break: break-all;
+}
+
+#vat .result td .modal td {
+    max-width: 200px;
+    white-space: initial;
+}
+
+.regionConf .region .radio {
+    display: block;
+    padding: 5px 10px;
+}
+
+/* 身份证与银行卡识别结束 */
+
+
+/* 财务报表开始 */
+
+#finSta div>.full-screen,
+#batch .full-screen {
+    position: absolute;
+    bottom: 36px;
+    right: 34px;
+    z-index: 9;
+    width: 50px;
+    height: 50px;
+    border: none;
+    background-color: transparent;
+    color: #2277da;
+    font-size: 12px;
+    line-height: 1;
+    padding: 0;
+    outline: none;
+}
+
+#finSta div>.full-screen i,
+#batch .full-screen i {
+    background: url("../images/demo/viewDetail.png") no-repeat center;
+    display: block;
+    width: 32px;
+    height: 32px;
+    margin: 0 auto 6px auto;
+}
+
+
+
+/* 财务报表结束 */
+
+
+/* 营业执照开始 */
+
+#busLis .sub-tab,
+#batch .sub-tab {
+    padding: 0;
+    max-width: 600px;
+    margin-bottom: 20px;
+    /* height: 47px; */
+    line-height: 45px;
+    border: 1px solid #2277DA;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+    color: #2277DA;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.sub-tab.disabled {
+    opacity: .5;
+}
+
+#busLis .sub-tab>div,
+#batch .sub-tab>div {
+    border-left: 1px solid #2277DA;
+    transition: background-color .3s, color .3s;
+}
+
+#busLis .sub-tab>div:first-child,
+#batch .sub-tab>div:first-child {
+    border-left: none;
+}
+
+#busLis .sub-tab>div.active,
+#batch .sub-tab>div.active {
+    background: #2277DA;
+    color: #fff;
+}
+
+#busLis .sub-tab>div:last-child,
+#batch .sub-tab>div:last-child {
+    float: right;
+}
+
+/* 营业执照结束 */
+/* 功能演示结束 */
+
+
+/* 应用场景开始 */
+
+.scenes {
+    background: url('../images/demo/yycj.png') no-repeat center center;
+    color: #FFF;
+    -moz-background-size: cover;
+    background-size: cover;
+}
+
+.scenes .container>div {
+    padding: 0;
+}
+
+.scenes h3 {
+    margin: 50px auto 60px auto;
+    color: #FFF;
+}
+
+.scenes .wrapper {
+    max-width: 360px;
+    margin-bottom: 40px;
+}
+
+.scenes .wrapper.pull-left {
+    margin-left: 45px;
+}
+
+.scenes .wrapper.pull-right {
+    margin-right: 45px;
+}
+
+.scenes .wrapper h4 {
+    font-size: 18px;
+    line-height: 30px;
+}
+
+.scenes .wrapper p {
+    font-size: 14px;
+    line-height: 20px;
+}
+
+
+
+
+/* 应用场景结束 */
+
+
+/* 技术特色开始 */
+
+.feature h3 {
+    margin: 40px auto 50px auto;
+}
+
+.feature ul {
+    margin-bottom: 70px;
+}
+
+.feature ul li {
+    padding: 0;
+}
+
+.feature ul li .wrapper {
+    margin: 10px;
+    padding: 20px;
+    border: 1px solid #CCC;
+}
+
+.feature ul li .wrapper .media-left {
+    /* padding-right: 20px; */
+}
+
+.feature ul li .wrapper .media-body h4 {
+    font-size: 20px;
+    margin-bottom: 16px;
+}
+
+.feature ul li .wrapper .media-body p {
+    font-size: 14px;
+    line-height: 20px;
+    color: #999;
+}
+
+
+
+
+/* 技术特色结束 */
+
+
+/* 批量识别开始 */
+
+#batch .thumb-list .thumb-item .count {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 22px;
+    background: rgba(255, 255, 255, .5);
+    color: #2277da;
+}
+
+#batch .main-img {
+    padding: 5px;
+}
+
+#batch .main-img .loading,
+#batch .result .loading {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    background-color: rgba(255, 255, 255, .5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+
+#batch .main-img .loading {
+    font-size: 32px;
+}
+
+#batch .result .loading {
+    font-size: 22px;
+    color: #666;
+}
+
+#batch .main-img .loading i {
+    animation: loading linear 1s infinite, fadeZoomIn .3s;
+}
+
+#batch .result .loading span {
+    animation: fadeZoomIn .3s;
+}
+
+@keyframes fadeZoomIn {
+    from {
+        transform: scale(2);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes loading {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+#batch .main-img .single-view,
+#batch .main-img .pandect-view {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+#batch .main-img .single-view {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#batch .main-img .pandect-view {
+    display: block;
+}
+
+#batch .main-img .pandect-view .sub-thumbs {
+    position: relative;
+    border: 5px solid transparent;
+    width: 50%;
+    height: 50%;
+    float: left;
+    overflow: hidden;
+}
+
+#batch .main-img .pandect-view .add-img {
+    position: relative;
+    float: left;
+    width: 50%;
+    height: 50%;
+    border: 5px solid transparent;
+    margin: 0;
+    background: #eaf3ff;
+    background-clip: content-box;
+    font-weight: 400;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #2277da;
+    text-align: center;
+}
+
+#batch .main-img .pandect-view .add-img::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    border: 1px dashed #5c96e5;
+}
+
+#batch .main-img .pandect-view .add-img .icon i {
+    display: block;
+    font-size: 36px;
+    height: 40px;
+    line-height: 40px;
+    transform: translateY(8px);
+    transition: transform .3s;
+}
+
+#batch .main-img .pandect-view .add-img .icon span {
+    opacity: 0;
+    transition: opacity .3s;
+}
+
+#batch .main-img .pandect-view .add-img:hover .icon i {
+    transform: translateY(0);
+}
+
+#batch .main-img .pandect-view .add-img:hover .icon span {
+    opacity: 1;
+}
+
+
+#batch .main-img .pandect-view .sub-thumbs.active::after {
+    content: "";
+    position: absolute;
+    border: 1px solid #2277da;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    border-radius: 1px;
+}
+
+#batch .main-img .pandect-view .sub-thumbs::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 28px 28px 0 0;
+    border-color: #007bff transparent transparent transparent;
+}
+
+#batch .main-img .pandect-view .sub-thumbs .index-num {
+    position: absolute;
+    font-size: 12px;
+    width: 18px;
+    height: 18px;
+    line-height: 18px;
+    top: 0;
+    left: 0;
+    text-align: center;
+    color: #fff;
+}
+
+#batch .main-img .pandect-view .sub-thumbs img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+#batch .main-img .pandect-view .sub-thumbs .pdf-viewer {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+#batch .main-img .pandect-view .sub-thumbs .pdf-viewer canvas {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+#batch .main-img .pandect-view .sub-thumbs .failed {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .5);
+    background-image: url("../images/demo/failed.png");
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+
+
+#batch .main-img .pandect-view .sub-thumbs .zoom-in,
+#batch .main-img .pandect-view .sub-thumbs .delete,
+#batch .main-img .single-view .delete,
+#batch .main-img .single-view .zoom-out {
+    position: absolute;
+    right: 12px;
+    width: 30px;
+    height: 30px;
+    z-index: 1;
+    cursor: pointer;
+    animation: subButtons .3s;
+    color: #fff;
+    line-height: 30px;
+    text-align: center;
+    background: rgba(58, 123, 200, .7);
+    border-radius: 50%;
+}
+
+#batch .main-img .pandect-view .sub-thumbs .zoom-in {
+    top: 10px;
+}
+
+#batch .main-img .pandect-view .sub-thumbs .delete,
+#batch .main-img .single-view .delete {
+    top: 50px;
+}
+
+#batch .main-img .single-view .zoom-out {
+    top: 10px;
+}
+
+@keyframes subButtons {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+#batch .result {
+}
+
+#batch .result h4.title {
+    position: relative;
+    z-index: 1;
+    background-color: #fafcff;
+}
+
+#batch .result .pandect-view {
+    width: 100%;
+    height: 100%;
+    margin-top: -45px;
+    border-top: 45px solid transparent;
+    overflow: auto;
+}
+
+#batch .result .pandect-view table {
+    white-space: nowrap;
+}
+
+/* 批量识别结束 */
+
+/* 全文识别开始 */
+
+#fullText .result pre {
+    background-color: initial;
+    border: none;
+    white-space: pre-wrap;
+}
+
+#fullText .config-item {
+    width: 240px;
+    margin: 20px auto 0 auto;
+}
+
+/* 全文识别结束 */
+
+/* 静默活体开始 */
+
+#silentLive .main-img {
+    padding: 0;
+    overflow: hidden;
+}
+
+/* 相机组件开始 */
+
+.camera-view {
+    position: relative;
+}
+
+.camera-view .capture {
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, .5);
+    cursor: pointer;
+}
+
+.camera-view .capture i {
+    color: #fff;
+    font-size: 24px;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    line-height: 64px;
+}
+
+.camera-view .flash-light {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #fff;
+    animation: cheese .3s;
+    display: none;
+}
+
+.camera-view .denied {
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.camera-view .denied i {
+    font-size: 4em;
+    position: relative;
+    text-shadow: 0 16px 48px rgba(0, 0, 0, .5);
+    animation: textShadowShow 5s;
+}
+
+.camera-view .denied i::after {
+    content: '\\';
+    color: #F44336;
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    line-height: calc(1 / 1.3);
+    height: 100%;
+    text-align: center;
+    font-size: 1.3em;
+    overflow: hidden;
+    animation: denied .5s;
+}
+
+.camera-view .denied p {
+    margin-top: 32px;
+    line-height: 1.5;
+    text-shadow: 0 3px 8px rgba(0, 0, 0, .5);
+}
+
+@keyframes cheese {
+    from {
+        opacity: 1;
+    } 
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes denied {
+    from {
+        height: 0%;
+    }
+    to {
+        height: 100%;
+    }
+}
+
+@keyframes textShadowShow {
+    from {
+        text-shadow: 0 0 0 rgba(0, 0, 0, .5);
+    }
+    to {
+        text-shadow: 0 16px 48px rgba(0, 0, 0, .5)
+    }
+}
+
+/* 相机组件结束 */
+
+/* 静默活体结束 */

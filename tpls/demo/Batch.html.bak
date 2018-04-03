@@ -1,0 +1,214 @@
+<!-- 批量识别 -->
+<div class="tab-pane fade in row active" id="batch">
+    <div class="sub-tab row center-block text-center" ng-show="template" ng-class="{'disabled': isLoading}">
+        <div class="col-sm-4" ng-click="changeTemplate(12002)" ng-class="{active: template === 12002}">新版营业执照</div>
+        <div class="col-sm-4" ng-click="changeTemplate(12003)" ng-class="{active: template === 12003}">企业法人</div>
+        <div class="col-sm-4" ng-click="changeTemplate(12004)" ng-class="{active: template === 12004}">个体工商户</div>
+    </div>
+    <div class="col-xs-12">
+        <ul class="thumb-list list-unstyled clearfix">
+            <li class="thumb-item" ng-repeat="item in dataList" ng-class="{'active': $index === activeIndex}" ng-click="changeIndex($index)">
+                <img class="img-responsive" ng-src="{{item.src}}">
+                <span class="thumb-mask">
+                    <span ng-if="!isLoading || (activeIndex !== $index) || isAdd">+ {{item.files.length}}</span>
+                <!-- <span ng-if="!isLoading || (activeIndex !== $index) || isAdd">+ {{item.files.length}}</span> -->
+                <!-- <span ng-if="isLoading && activeIndex === $index">{{loadedCount}} / {{totalCount}}</span> -->
+                </span>
+            </li>
+            <li class="tips" ng-if="!dataList.length"><span class="tips-icon"></span>上传图像预览区</li>
+        </ul>
+    </div>
+    <div class="col-xs-6">
+        <div class="main-img">
+            <div class="sub-thumbs" ng-repeat="item in dataList[activeIndex].subThumbs track by $index" ng-class="{'active': $index === activeSubIndex}" ng-click="changeSubIndex($index)" ng-if="!isFullView">
+                <span class="index-num">{{$index + 1}}</span>
+                <img class="img-responsive" ng-src="{{item}}">
+                <img src="images/demo/failed.png" alt="识别失败" class="img-responsive failed" ng-if="dataList[activeIndex].result.ocrInfoList[$index].ocrInfo.resCd && dataList[activeIndex].result.ocrInfoList[$index].ocrInfo.resCd !== '00000'">
+                <span class="zoom-in" ng-click="fullView($index)"><i class="fa fa-search-plus"></i></span>
+                <span class="remove" ng-click="remove($index)" ng-if="dataList[activeIndex].result.ocrInfoList[$index].ocrInfo.resCd && dataList[activeIndex].result.ocrInfoList[$index].ocrInfo.resCd !== '00000'"><i class="fa fa-trash-o"></i></span>
+            </div>
+            <label class="add-item" ng-if="!isFullView && dataList.length && dataList[activeIndex].files.length < 4"><i class="fa fa-plus"></i>
+                <input class="hide" type="file" multiple onchange="angular.element(this).scope().addItem(this)">
+            </label>
+            <div class="full-view" ng-if="isFullView">
+                <img class="img-responsive" ng-src="{{dataList[activeIndex].subThumbs[activeSubIndex]}}">
+                <span class="zoom-out" ng-click="gridView()"><i class="fa fa-search-minus"></i></span>
+                <span class="view-remove" ng-click="remove(activeSubIndex)" ng-if="dataList[activeIndex].result.ocrInfoList[activeSubIndex].ocrInfo.resCd && dataList[activeIndex].result.ocrInfoList[activeSubIndex].ocrInfo.resCd !== '00000'"><i class="fa fa-trash-o"></i></span>
+                <span class="index-num">{{activeSubIndex + 1}}</span>
+            </div>
+            <div class="main-mask" ng-if="isLoading">
+                <div class="loader"></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-6">
+        <!-- 查看详情按钮 -->
+        <button class="full-screen" data-toggle="modal" data-target="#expModalInBatch" title="查看详情" ng-if="dataList[activeIndex].result.ocrInfoList[activeSubIndex].ocrInfo.resCd === '00000' && isfinSta"><i class="fa fa-arrows-alt"></i>
+            <br>
+            <span>查看详情</span>
+        </button>
+        <!-- /查看详情按钮 -->
+        <!-- 查看详情模态框 -->
+        <div class="modal fade" id="expModalInBatch" tabindex="-1" role="dialog" aria-labelledby="expModalInBatchLabel">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="expModalInBatchLabel">查看详情</h4>
+                    </div>
+                    <div class="modal-body">
+                        <table class="table table-striped table-responsive table-hover">
+                            <tbody>
+                                <tr ng-repeat="row in dataList[activeIndex].result.ocrInfoList[activeSubIndex].ocrInfo.ocrResult.table.tableRow">
+                                    <td ng-repeat="item in row.tableItem">{{item.value}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /查看详情模态框 -->
+        <div class="result">
+            <!-- <h4 class="text-center">识别结果</h4> -->
+            <div class="text" ng-if="!isLoading && dataList[activeIndex]">
+                <!-- 文件列表 -->
+                <div class="result-table" ng-if="!isFullView && !isFinSta && dataList[activeIndex].result && dataList[activeIndex].result.ocrInfoList[activeSubIndex].ocrInfo.resCd === '00000'">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>序号</th>
+                                <th>图片名称</th>
+                                <th ng-repeat="item in dataList[activeIndex].commonHead">{{transText[currSrv][item]}}</th>
+                                <th ng-if="dataList[activeIndex].hasDetail">明细</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="item in dataList[activeIndex].result.ocrInfoList">
+                                <td>{{$index + 1}}</td>
+                                <td>{{dataList[activeIndex].files[$index].name}}</td>
+                                <td ng-repeat="key in dataList[activeIndex].commonHead">{{item.ocrInfo.ocrResult[key]}}</td>
+                                <td ng-if="isVat && dataList[activeIndex].hasDetail">
+                                    <button class="btn btn-link nopad" ng-if="item.ocrInfo.ocrResult.detail && item.ocrInfo.ocrResult.detail.length" data-toggle="modal" data-target="#ModalInBatch{{$index}}">展开明细</button>
+                                    <div class="modal fade" id="ModalInBatch{{$index}}" tabindex="-1" role="dialog" aria-labelledby="ModalLabelInBatch{{$index}}">
+                                        <div class="modal-dialog modal-lg" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                    <h4 class="modal-title" id="ModalLabelInBatch{{$index}}">明 细</h4>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <table class="table table-striped table-responsive table-hover">
+                                                        <thead>
+                                                            <tr>
+                                                                <th ng-repeat="(key, val) in item.ocrInfo.ocrResult.detail[0]">{{transText[currSrv][key]}}</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr ng-repeat="subItem in item.ocrInfo.ocrResult.detail">
+                                                                <td ng-repeat="(key, val) in subItem">{{val}}</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /文件列表 -->
+                <!-- 识别结果 -->
+                <div class="result-item" ng-if="isFullView && !isFinSta && dataList[activeIndex].result && dataList[activeIndex].result.ocrInfoList[activeSubIndex].ocrInfo.resCd === '00000'">
+                    <table class="table table-striped table-responsive table-hover">
+                        <tbody>
+                            <tr ng-repeat="(key, val) in dataList[activeIndex].result.ocrInfoList[activeSubIndex].ocrInfo.ocrResult" ng-if="key !== 'detail'">
+                                <td>{{transText[currSrv][key]}}</td>
+                                <td class="wordwrap">{{val}}</td>
+                            </tr>
+                            <tr ng-if="isVat && dataList[activeIndex].result.ocrInfoList[activeSubIndex].ocrInfo.ocrResult.detail && dataList[activeIndex].result.ocrInfoList[activeSubIndex].ocrInfo.ocrResult.detail.length">
+                                <td>明细</td>
+                                <td>
+                                    <button class="btn btn-link nopad" data-toggle="modal" data-target="#detailModalInBatch">展开明细</button>
+                                    <div class="modal fade" id="detailModalInBatch" tabindex="-1" role="dialog" aria-labelledby="ModalLabelInBatch">
+                                        <div class="modal-dialog modal-lg" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                    <h4 class="modal-title" id="ModalLabelInBatch">明 细</h4>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <table class="table table-striped table-responsive table-hover">
+                                                        <thead>
+                                                            <tr>
+                                                                <th ng-repeat="(key, val) in dataList[activeIndex].result.ocrInfoList[activeSubIndex].ocrInfo.ocrResult.detail[0]">{{transText[currSrv][key]}}</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr ng-repeat="subItem in dataList[activeIndex].result.ocrInfoList[activeSubIndex].ocrInfo.ocrResult.detail">
+                                                                <td ng-repeat="(key, val) in subItem">{{val}}</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- 财报识别 -->
+                <div class="result-item" ng-if="isFinSta && dataList[activeIndex].result && dataList[activeIndex].result.ocrInfoList[activeSubIndex].ocrInfo.resCd === '00000'">
+                    <table class="table table-striped table-responsive table-hover">
+                        <tbody>
+                            <tr ng-repeat="row in dataList[activeIndex].result.ocrInfoList[activeSubIndex].ocrInfo.ocrResult.table.tableRow">
+                                <td ng-repeat="item in row.tableItem">{{item.value}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /财报识别 -->
+                <!-- /识别结果 -->
+            </div>
+            <div class="failed" ng-if="isFullView && dataList[activeIndex].result && dataList[activeIndex].result.ocrInfoList[activeSubIndex].ocrInfo.resCd !== '00000'">{{dataList[activeIndex].result.ocrInfoList[activeSubIndex].ocrInfo.resMsg}}</div>
+            <span class="loading-placeholder" ng-if="isLoading">正在识别，请稍侯 ... </span>
+        </div>
+    </div>
+</div>
+<div class="clearfix"></div>
+<div class="file-button col-md-12">
+    <button class="btn config" data-toggle="modal" data-target="#fieldConfBatch" ng-if="isVat || isBusLis">配置识别域</button>
+    <label for="batchUp">
+        <div class="btn center-block" ng-disabled="isLoading">上传本地图片</div>
+    </label>
+    <input type="file" class="trans-input" id="batchUp" multiple accept="image/gif, image/jpeg, image/png" onchange="angular.element(this).scope().fileChanged(this)" ng-disabled="isLoading">
+</div>
+</div>
+<!-- 识别配置框 -->
+<div class="fieldConf modal fade" id="fieldConfBatch" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" ng-if="isVat || isBusLis">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="myModalLabel">识别域配置</h4>
+            </div>
+            <div class="modal-body">
+                <p>说明：</p>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;如果您不配置识别域，我们将默认识别以下选中识别项。</p>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;我们会保存您配置的识别域，识别域无更改的情况下，您无需重新配置。</p>
+                <p>选择识别项：</p>
+                <label ng-repeat="item in fieldsView" ng-if="item.display">
+                    <input type="checkbox" ng-model="item.checked">{{item.name}}</label>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="saveConfig()" ng-disabled="saveDisabled">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /识别配置框 -->
+<!-- /批量识别 -->
