@@ -458,7 +458,7 @@
                         end = Date.now();
                         delta = end - start;
                         var transitionDuration = parseFloat(element.css('transitionDuration')) * 1000;
-                        var delay = delta > transitionDuration ? delta : transitionDuration;
+                        var delay = delta > transitionDuration ? 0 : transitionDuration;
                         $window.setTimeout(function() {
                             element.removeClass(transClassName + '-enter').addClass(transClassName + '-leave');
                             $window.setTimeout(function() {
@@ -490,7 +490,7 @@
                         }, 16.7);
                     });
                     scope.$on('$stateChangeSuccess', function() {
-                        $window.clearTimeout(timer);
+                        $window.clearInterval(timer);
                         element.css({transition: '', width: '100%'});
                         var transitionDuration = parseFloat(element.css('transitionDuration')) * 1000;
                         $window.setTimeout(function() {
