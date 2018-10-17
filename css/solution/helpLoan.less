@@ -1,0 +1,272 @@
+@charset "UTF-8";
+
+
+#helpLoan {
+    background-color: #f6f6f6;
+    .banner {
+        background: url("../../images/solution/helpLoan_banner_1.jpg") no-repeat center center / cover;
+    }
+    // 功能介绍
+    .introduction {
+        .introduction-card {
+            background-color: #fff;
+            box-shadow: 0 3px 5px #e8f0f5;
+        }
+        .introduction-banner {
+            height: 404px;
+            background-image: url("../../images/solution/helpLoan_banner_2.png");
+            background-position: center top;
+            background-size: auto 404px;
+            background-color: #ecf2fa;
+            background-repeat: no-repeat;
+            @media (max-width: 1200px) {
+                height: 320px;
+                background-size: auto 320px;
+            }
+            @media (max-width: 992px) {
+                height: auto;
+            }
+            @media (max-width: 640px) {
+                background-size: auto 240px;
+            }
+            @media (max-width: 480px) {
+                background-size: auto 240px;
+            }
+            .transparent-placeholder {
+                height: 404px;
+                @media (max-width: 1200px) {
+                    height: 320px;
+                }
+                @media (max-width: 640px) {
+                    height: 240px;
+                }
+            }
+            .banner-caption-list {
+                margin: 0;
+                @media (max-width: 992px) {
+                    margin-top: 30px;
+                }
+                .banner-caption-item {
+                    @media (max-width: 480px) {
+                        width: 100%;
+                    }
+                    &.banner-caption-animate {
+                        animation-name: fadeUp;
+                    }
+                    &.banner-caption-item-transparent {
+                        opacity: 0;
+                    }
+                    .banner-caption-content {
+                        margin: 104px 56px 0 56px;
+                        background-image: linear-gradient(to bottom,#43e1f4 0,#4f64f6 100%);
+                        position: relative;
+                        @media (max-width: 1200px) {
+                            margin: 60px 30px;
+                        }
+                        @media (max-width: 992px) {
+                            margin: 0 30px 30px 30px;
+                        }
+                        &::before {
+                            content: "";
+                            position: absolute;
+                            top: 1px;
+                            right: 1px;
+                            bottom: 1px;
+                            left: 1px;
+                            background-color: #f6f8fc;
+                        }
+                        > section {
+                            position: relative;
+                            z-index: 1;
+                            padding: 24px 15px;
+                            color: #333;
+                            &::before,
+                            &::after {
+                                content: "";
+                                position: absolute;
+                                width: 44px;
+                                height: 44px;
+                                border-color: #6aedf3;
+                                border-style: solid;
+                            }
+                            &::before {
+                                top: -6px;
+                                left: -6px;
+                                border-width: 1px 0 0 1px;
+                            }
+                            &::after {
+                                border-width: 0 1px 1px 0;
+                                right: -6px;
+                                bottom: -6px;
+                            }
+                            > h4 {
+                                font-size: 20px;
+                                line-height: 20px;
+                                margin: 0 0 26px 0;
+                                font-weight: 400;
+                            }
+                            > p {
+                                font-size: 14px;
+                                line-height: 30px;
+                                margin: 0;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .feature-list {
+            margin-bottom: 0;
+            .feature-item {
+                @media (max-width: 992px) {
+                    width: 100%;
+                }
+                &.feature-list-animate {
+                    animation-name: fadeSlide;
+                }
+                > section {
+                    padding: 34px;
+                    @media (max-width: 992px) {
+                        padding: 16px;
+                    }
+                    > h4 {
+                        font-size: 20px;
+                        line-height: 20px;
+                        font-weight: 400;
+                        margin-bottom: 22px;
+                    }
+                    > p {
+                        font-size: 14px;
+                        line-height: 30px;
+                        margin: 0;
+                        @media (max-width: 992px) {
+                            line-height: 24px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    // 解决方案优势介绍
+    .advantage .advantage-card {
+        background-color: #fff;
+        box-shadow: 0 3px 5px #dee1e4;
+        .advantage-list {
+            padding: 0 25px;
+            margin-bottom: 0;
+            @media (max-width: 640px) {
+                padding-bottom: 16px;
+            }
+            .advantage-item {
+                padding: 40px 34px;
+                @media (max-width: 640px) {
+                    padding: 8px 16px;
+                }
+                &.advantage-list-animate {
+                    animation-name: fadeSlide;
+                }
+                i {
+                    display: block;
+                    margin: 28px auto 40px auto;
+                    width: 110px;
+                    height: 110px;
+                    background-image: url("../../images/solution/helpLoan_advantage.png");
+                    &.multiple {
+                        background-position: -10px -10px;
+                    }
+                    &.humanize {
+                        background-position: -140px -10px;
+                    }
+                    &.hybrid {
+                        background-position: -10px -140px;
+                    }
+                    &.flexible {
+                        background-position: -140px -140px;
+                    }
+                }
+                h4 {
+                    font-size: 20px;
+                    line-height: 20px;
+                    font-weight: 400;
+                    margin: 0 0 16px 0;
+                    @media (max-width: 640px) {
+                        font-size: 16px;
+                        font-weight: 500;
+                    }
+                }
+                p {
+                    font-size: 14px;
+                    line-height: 22px;
+                    margin: 0;
+                }
+            }
+        }
+    }
+    // 诚邀合作流程
+    .cooperation {
+        .cooperation-card {
+            background-color: #fff;
+            box-shadow: 0 3px 5px #dee1e4;
+            padding: 0 26px;
+            margin-bottom: 30px;
+            @media (max-width: 768px) {
+                padding: 10px 26px;
+            }
+            .cooperation-list {
+                margin-bottom: 0;
+                .cooperation-item {
+                    padding: 56px 26px;
+                    @media (max-width: 768px) {
+                        padding: 16px 16px 0 16px;
+                    }
+                    &.cooperation-animate {
+                        animation-name: fadeSlide;
+                    }
+                    .media {
+                        .media-left span {
+                            display: block;
+                            width: 60px;
+                            height: 50px;
+                            position: relative;
+                            font-size: 24px;
+                            line-height: 50px;
+                            color: #999;
+                            text-align: center;
+                            &::before,
+                            &::after {
+                                content: "";
+                                position: absolute;
+                                width: 35px;
+                                height: 35px;
+                                border: 1px solid #999;
+                                transform: rotate(45deg);
+                                transform-origin: top left;
+                            }
+                            &::before {
+                                left: 25px;
+                            }
+                            &::after {
+                                left: 35px;
+                            }
+                        }
+                        .media-body {
+                            h4 {
+                                font-size: 16px;
+                                line-height: 24px;
+                                font-weight: 400;
+                            }
+                            p {
+                                font-size: 14px;
+                                line-height: 22px;
+                                color: #999;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .bottom-banner {
+            margin-bottom: 30px;
+        }
+    }
+}

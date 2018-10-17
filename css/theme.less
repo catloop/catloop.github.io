@@ -1,0 +1,245 @@
+@charset "UTF-8";
+@import "variable.less";
+
+/* 按钮 */
+.btn {
+    /*min-width: 88px;*/
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border-width: 0;
+    border-radius: 2px;
+    font-size: 14px;
+    font-weight: 500;
+    box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
+}
+
+.btn[disabled] {
+    filter: grayscale(1);
+}
+
+button,
+.btn:focus {
+    outline: none !important;
+    
+}
+
+button.close {
+    font-size: 26px;
+    font-weight: 400;
+}
+
+.btn {
+    &.btn-default {
+        color: #333;
+    }
+    &.btn-primary,
+    &.btn-primary:active {
+        background-color: @primary;
+    }
+    &:active {
+        box-shadow: 0 5px 5px -3px rgba(0,0,0,.2), 0 8px 10px 1px rgba(0,0,0,.14), 0 3px 14px 2px rgba(0,0,0,.12);
+        transition: background-color .3s, box-shadow .3s;
+    }
+    &.btn-1px {
+        border-width: 1px;
+        border-style: solid;
+        border-color: #999;
+        color: #999;
+        background-color: transparent;
+        transition: background-color .3s, color .3s;
+        box-shadow: none;
+        &:hover {
+            color: #666;
+            border-color: #666;
+            transition: background-color .3s, color .3s;
+        }
+        &.btn-default {
+            border-color: #fff;
+            color: #fff;
+            &:hover {
+                background-color: #fff;
+                color: #333;
+            }
+        }
+        &.btn-primary {
+            border-color: @primary;
+            color: @primary;
+            &:hover {
+                background-color: @primary;
+                color: #fff;
+            }
+        }
+    }
+    &.btn-icon {
+        padding: 0;
+        i {
+            font-size: 20px;
+            line-height: 32px;
+            height: 32px;
+            width: 32px;
+            text-align: center;
+        }
+    }
+    &.btn-flat {
+        color: #666;
+        background-color: transparent;
+        border: none;
+        box-shadow: none;
+        &.btn-default {
+            color: #333;
+            background-color: transparent;
+        }
+        &.btn-primary {
+            color: @primary;
+            background-color: transparent;
+        }
+    }
+}
+
+.btn.nopad {
+    box-shadow: none;
+    min-width: auto;
+}
+
+.btn.flat {
+    background-color: transparent;
+    box-shadow: none !important;
+}
+
+/* /按钮 */
+
+/* 模态框 */
+.modal-content {
+    border: none;
+    border-radius: 2px;
+    box-shadow: 0 11px 15px -7px rgba(0,0,0,.2), 0 24px 38px 3px rgba(0,0,0,.14), 0 9px 46px 8px rgba(0,0,0,.12);
+}
+
+.modal-header {
+    border-bottom: none;
+}
+
+.modal-footer {
+    border-top: none;   
+}
+
+.modal.fade .modal-dialog {
+    transition: transform .3s ease;
+    transform: scale(.9);
+}
+
+.modal.in .modal-dialog {
+    transform: scale(1);
+}
+/* /模态框 */
+
+/* 下拉菜单 */
+.navbar-default .navbar-nav>.open>a,
+.navbar-default .navbar-nav>.open>a:focus,
+.navbar-default .navbar-nav>.open>a:hover {
+    background-color: transparent;
+}
+
+.dropdown .caret {
+    transition: transform .3s;
+}
+
+.dropdown.open .caret {
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    transform: rotate(180deg);
+}
+
+.dropdown .dropdown-menu {
+    transform-origin: top right;
+    /*animation: dropdown .3s;*/
+    display: block;
+    visibility: hidden;
+    opacity: 0;
+    transform: scale(.9);
+    transition: opacity .3s, transform .3s, visibility .3s;
+}
+.dropdown.open .dropdown-menu {
+    visibility: visible;
+    opacity: 1;
+    transform: scale(1);
+}
+
+.dropdown .dropdown-menu a {
+    color: #333;
+    padding: 5px 10px;
+    border: none;
+}
+
+.dropdown .dropdown-menu a i {
+    padding: 0 10px;
+}
+
+.dropdown-menu {
+    border-width: 0;
+    border-radius: 2px;
+    box-shadow: 0 5px 5px -3px rgba(0,0,0,.2), 0 8px 10px 1px rgba(0,0,0,.14), 0 3px 14px 2px rgba(0,0,0,.12);
+}
+
+.dropdown-menu>li>a {
+    padding: 4px 16px;
+    line-height: 2.4;
+    outline: none;
+    cursor: pointer;
+    transition: background-color .3s;
+}
+
+.dropdown-menu > li > a:focus,
+.dropdown-menu > li > a:hover {
+    background-color: rgba(0,0,0,0.12);
+}
+
+.dropdown-menu > .active > a,
+.dropdown-menu > .active > a:focus,
+.dropdown-menu > .active > a:hover {
+    color: #fff;
+    background-color: @primary;
+}
+
+.dropdown-menu .divider {
+    margin: 0;
+}
+/* /下拉菜单 */
+
+.popover {
+    border: none;
+    border-radius: 2px;
+}
+
+// 标签页
+.nav-tabs {
+  border-bottom: none;
+  > li {
+    margin-bottom: 0;
+    > a {
+      color: #333;
+      margin-right: 0;
+      border-width: 0 0 2px 0;
+      border-color: transparent;
+      border-radius: 0;
+      border-width: 0;
+      &:hover {
+        border-color: transparent;
+      }
+    }
+    &.active > a {
+      &,
+      &:hover,
+      &:focus {
+        color: @primary;
+        background-color: transparent;
+        border-width: 0 0 2px 0;
+        border-bottom-color: @primary;
+        cursor: default;
+      }
+    }
+  }
+}

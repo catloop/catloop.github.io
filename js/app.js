@@ -55,10 +55,6 @@
                 'subView@demo.idCard': {
                     templateUrl: 'tpls/demo/idCard.html',
                     controller: 'demoIdCardCtrl'
-                },
-                'subViewBatch@demo.idCard': {
-                    templateUrl: 'tpls/demo/Batch.html',
-                    controller: 'demoBatchCtrl'
                 }
             }
         },
@@ -73,10 +69,6 @@
                 'subView@demo.creditCard': {
                     templateUrl: 'tpls/demo/creditCard.html',
                     controller: 'demoCreditCardCtrl'
-                },
-                'subViewBatch@demo.creditCard': {
-                    templateUrl: 'tpls/demo/Batch.html',
-                    controller: 'demoBatchCtrl'
                 }
             }
         },
@@ -91,10 +83,6 @@
                 'subView@demo.vat': {
                     templateUrl: 'tpls/demo/vat.html',
                     controller: 'demoVatCtrl'
-                },
-                'subViewBatch@demo.vat': {
-                    templateUrl: 'tpls/demo/Batch.html',
-                    controller: 'demoBatchCtrl'
                 }
             }
         },
@@ -109,10 +97,6 @@
                 'subView@demo.finSta': {
                     templateUrl: 'tpls/demo/finSta.html',
                     controller: 'demoFinStaCtrl'
-                },
-                'subViewBatch@demo.finSta': {
-                    templateUrl: 'tpls/demo/Batch.html',
-                    controller: 'demoBatchCtrl'
                 }
             }
         },
@@ -127,10 +111,6 @@
                 'subView@demo.busLis': {
                     templateUrl: 'tpls/demo/busLis.html',
                     controller: 'demoBusLisCtrl'
-                },
-                'subViewBatch@demo.busLis': {
-                    templateUrl: 'tpls/demo/Batch.html',
-                    controller: 'demoBatchCtrl'
                 }
             }
         },
@@ -157,12 +137,53 @@
             views: {
                 '@': routers.demo.config.views['@'],
                 'subView@demo.silentLive': {
-                    templateUrl: 'tpls/demo/silentLive.html',
-                    controller: 'demoSilentLiveCtrl'
+                    templateUrl: 'tpls/demo/silentLive.html'
                 }
             }
         },
         title: '静默活体检测'
+    };
+    routers['demo.handwrittenSignature'] = {
+        state: 'demo.handwrittenSignature',
+        config: {
+            url: '/handwrittenSignature',
+            views: {
+                '@': routers.demo.config.views['@'],
+                'subView@demo.handwrittenSignature': {
+                    templateUrl: 'tpls/demo/handwrittenSignature.html',
+                    controller: 'demoHandwrittenSignatureCtrl'
+                }
+            }
+        },
+        title: '手写签名识别‧验证'
+    };
+    routers['demo.socialSecurityCard'] = {
+        state: 'demo.socialSecurityCard',
+        config: {
+            url: '/socialSecurityCard',
+            views: {
+                '@': routers.demo.config.views['@'],
+                'subView@demo.socialSecurityCard': {
+                    templateUrl: 'tpls/demo/socialSecurityCard.html',
+                    controller: 'demoSocialSecurityCardCtrl'
+                }
+            }
+        },
+        title: '社保卡识别'
+    };
+    routers['demo.trainTicket'] = {
+        state: 'demo.trainTicket',
+        config: {
+            url: '/trainTicket',
+            views: {
+                '@': routers.demo.config.views['@'],
+                'subView@demo.trainTicket': {
+                    templateUrl: 'tpls/demo/trainTicket.html',
+                    controller: 'demoTrainTicketCtrl'
+                }
+            }
+        },
+        title: '火车票识别'
     };
     routers.solution = {
         state: 'solution',
@@ -190,12 +211,26 @@
         },
         title: '助账宝'
     };
+    routers['solution.helpLoan'] = {
+        state: 'solution.helpLoan',
+        config: {
+            url: '/helpLoan',
+            views: {
+                '@': routers.solution.config.views['@'],
+                'subView@solution.helpLoan': {
+                    templateUrl: 'tpls/solution/helpLoan.html'
+                }
+            }
+        },
+        title: '助贷宝'
+    };
     routers.doc = {
         state: 'doc',
         config: {
             url: '/doc',
             templateUrl: 'tpls/doc.html',
-            controller: 'docCtrl'
+            controller: 'docCtrl',
+            params: { anchor: null }
         },
         title: '开发接入'
     };
@@ -263,8 +298,12 @@
                 .state(routers['demo.busLis'].state, routers['demo.busLis'].config)
                 .state(routers['demo.fullText'].state, routers['demo.fullText'].config)
                 .state(routers['demo.silentLive'].state, routers['demo.silentLive'].config)
-                .state(routers['solution'].state, routers['solution'].config)
+                .state(routers['demo.handwrittenSignature'].state, routers['demo.handwrittenSignature'].config)
+                .state(routers['demo.socialSecurityCard'].state, routers['demo.socialSecurityCard'].config)
+                .state(routers['demo.trainTicket'].state, routers['demo.trainTicket'].config)
+                .state(routers.solution.state, routers.solution.config)
                 .state(routers['solution.helpAccount'].state, routers['solution.helpAccount'].config)
+                .state(routers['solution.helpLoan'].state, routers['solution.helpLoan'].config)
                 .state(routers.doc.state, routers.doc.config)
                 .state(routers.price.state, routers.price.config)
                 .state(routers.accessGuide.state, routers.accessGuide.config)
@@ -284,21 +323,28 @@
             $rootScope.$state = $state;
             $rootScope.$stateParams = $stateParams;
             $rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
+                // 默认页面跳转
+                var defaults = {
+                    demo: 'demo.face',
+                    solution: 'solution.helpAccount'
+                };
                 // 算法演示默认人脸识别
-                if ($state.current.name === 'demo') {
-                    $state.go('demo.face');
-                }
-                // 行业方案默认助帐宝
-                if ($state.current.name === 'solution') {
-                    $state.go('solution.helpAccount');
+                for (var k in defaults) {
+                    if ($state.current.name === k) {
+                        $state.go(defaults[k]);
+                        break;
+                    }
                 }
                 // 修改标题，按“子页面 - 页面 - 微模式”格式拼接
                 if ($state.current.name === 'index') {
                     $rootScope.title = "识验云 - 微模式";
-                } else {
+                } else if (!!$state.current.name) {
                     var strArr = [];
                     var propArr = $state.current.name.split('.');
                     var tmpArr = [];
+                    if (!propArr.length) {
+                        return;
+                    }
                     for (var i = 0; i < propArr.length; i++) {
                         tmpArr.push(propArr[i]);
                         strArr.unshift(' - ');

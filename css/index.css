@@ -1,8 +1,9 @@
+@charset "UTF-8";
+
 /**
  * 首页样式
  */
 
-@charset "UTF-8";
 h3 {
     margin: 50px auto 50px auto;
 }
@@ -65,7 +66,7 @@ h3 {
 
 .mps-carousel.carousel .carousel-indicators li.active {
     border: none;
-    background-color: #3ca0f0;
+    background-color: #448aff;
 }
 
 .mps-carousel.carousel .carousel-caption {
@@ -138,10 +139,6 @@ h3 {
     .mps-carousel.carousel .carousel-caption .access {
         display: none;
     }
-    .mps-carousel.carousel .carousel-indicators li {
-        width: 20px;
-        margin: 0 4px;
-    }
 }
 
 @media (max-width: 360px) {
@@ -184,7 +181,7 @@ h3 {
 }
 
 .product-cate ul li:hover::after {
-    background-color: #0074BC;
+    background-color: #448aff;
     -webkit-transition: background-color .3s;
     -moz-transition: background-color .3s;
     transition: background-color .3s;
@@ -197,7 +194,7 @@ h3 {
     height: 106px;
     left: 50%;
     margin-left: -53px;
-    border: 1px solid #0074BC;
+    border: 1px solid #448aff;
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
     border-radius: 50%;
@@ -206,7 +203,7 @@ h3 {
 }
 
 .product-cate ul li .product-icon-hover {
-    background-color: #0074BC;
+    background-color: #448aff;
 }
 
 .product-cate ul li .product-icon,

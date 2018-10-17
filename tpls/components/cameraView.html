@@ -1,0 +1,1 @@
+<div class="camera-view"><video ng-show="permission"></video><div class="denied" ng-if="!permission"><i class="fa fa-video-camera"></i><p>未检测到摄像头，确认摄像头已连接并允许浏览器使用。</p></div><canvas class="hidden"></canvas><div class="flash-light"></div><div class="capture" ng-if="permission && allowcapture && loaded" ng-click="flash()"><i class="fa fa-camera"></i></div></div>

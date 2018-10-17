@@ -1,0 +1,108 @@
+@charset "UTF-8";
+
+// 静默活体检测
+#silentLive {
+    .banner {
+        background-image: url("../../images/demo/face/banner.jpg");
+    }
+    // 功能介绍
+    .introduction-silentLive {
+        .introduction-content {
+            margin: 0;
+            display: flex;
+            color: #fff;
+            @media (max-width: 768px) {
+                flex-wrap: wrap;
+                .introduction-left,
+                .introduction-right {
+                    width: 100%;
+                    ul li {
+                        padding-top: 20px;
+                        &:first-child {
+                            padding-top: 0;
+                        }
+                        h4 {
+                            font-size: 18px;
+                            margin-bottom: 12px;
+                        }
+                        p {
+                            font-size: 14px;
+                        }
+                    }
+                }
+            }
+            > div {
+                padding: 0;
+            }
+            .introduction-left {
+                img {
+                    width: 100%;
+                }
+            }
+            .introduction-right {
+                background-color: #4f5052;
+                ul {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    height: 100%;
+                    margin: 0;
+                    padding: 62px 80px;
+                    @media (max-width: 1200px) {
+                        padding: 30px 40px;
+                    }
+                    @media (max-width: 992px) {
+                        padding: 24px;
+                        li {
+                            padding-left: 18px;
+                            h4 {
+                                font-size: 16px;
+                                margin-bottom: 4px;
+                                &::before {
+                                    width: 8px;
+                                    height: 8px;
+                                    left: -16px;
+                                    top: 5px;
+                                }
+                            }
+                            p {
+                                font-size: 12px;
+                                line-height: 18px;
+                            }
+                        }
+                    }
+                    li {
+                        padding-left: 30px;
+
+                        &.introduction-animate {
+                            animation-name: fadeSlide;
+                        }
+                        h4 {
+                            font-size: 20px;
+                            line-height: 20px;
+                            margin: 0 0 12px 0;
+                            position: relative;
+                            &::before {
+                                content: "";
+                                position: absolute;
+                                top: 3px;
+                                left: -28px;
+                                transform: rotate(45deg);
+                                width: 12px;
+                                height: 12px;
+                                background-color: transparent;
+                                border: 2px solid #fff;
+                            }
+
+                        }
+                        p {
+                            font-size: 14px;
+                            line-height: 24px;
+                            margin: 0;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

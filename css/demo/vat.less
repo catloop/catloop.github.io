@@ -1,0 +1,31 @@
+@charset "UTF-8";
+
+// 功能介绍图片(图标？) hack
+#demo .introduction .introduction-img-list .introduction-img-item img {
+    margin: 30px auto;
+}
+
+// 演示区域
+#demo #vat {
+    .app-card {
+        .info-tips {
+            margin-bottom: 24px;
+        }
+        .rec-result {
+            td {
+                &:first-child {
+                    white-space: nowrap;
+                }
+                &:last-child {
+                    word-break: break-all;
+                }
+            }
+            .group-mode {
+                > thead > tr > th,
+                > tbody > tr > td {
+                    white-space: nowrap;
+                }
+            }
+        }
+    }
+}

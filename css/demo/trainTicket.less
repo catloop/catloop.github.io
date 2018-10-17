@@ -1,0 +1,30 @@
+@charset "UTF-8";
+// 火车票识别
+
+// 功能介绍图片(图标？) hack
+#demo .introduction .introduction-img-list .introduction-img-item img {
+    margin: 30px auto;
+}
+
+// 演示区域
+#demo #trainTicket {
+    .app-card {
+        .top-actions {
+            margin-bottom: 32px;
+        }
+        .preview-and-result {
+            .rec-result table {
+                word-break: break-all;
+                th {
+                    white-space: nowrap;
+                }
+            }
+            &.multiple {
+                .rec-result table tbody tr td.td-QRResult span {
+                    display: block;
+                    width: 500px;
+                }
+            }
+        }
+    }
+}
